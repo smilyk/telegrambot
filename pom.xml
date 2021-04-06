@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.smilyk.</groupId>
 	<artifactId>telegrambot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<name>telegrambot</name>
 	<description>Telegram bot for searching new articles ib JavaRush</description>
     <properties>
