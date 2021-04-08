@@ -1,11 +1,34 @@
-version: '3.1'
+version: '2.1'
 
 services:
-  jrtb:
+  app:
+    container_name: app
     build:
+      dockerfile: Dockerfile
       context: .
     environment:
       - BOT_NAME=${BOT_NAME}
       - BOT_TOKEN=1442794228:AAGScp-0maWQiltVUyiPUnX9tcb9SCXwCsw
+      - MYSQL_ROOT_PASSWORD=${BOT_DB_PASSWORD}
+      - MYSQL_ROOT_USERNAME=${BOT_DB_USERNAME}
     restart: always
+    depends_on:
+      db: { condition: service_healthy }
+
+  db:
+    container_name: db
+    image: 'mysql:5.7'
+    restart: always
+    environment:
+      - MYSQL_ROOT_USER=${BOT_DB_USERNAME}
+      - MYSQL_DATABASE=products-database
+      - MYSQL_ROOT_PASSWORD=${BOT_DB_PASSWORD}
+    ports:
+      - '3333:3306'
+    expose:
+      - '3333'
+    healthcheck:
+      test: 'mysql --user=root --password=root --execute "SHOW DATABASES;"'
+      retries: 2
+      timeout: 10s
 

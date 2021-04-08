@@ -11,8 +11,10 @@ mvn package
 docker-compose stop
 
 # Add environment variables
-export BOT_NAME=$1
-export BOT_TOKEN=$2
+export BOT_NAME=SmilykBot
+export BOT_TOKEN=1442794228:AAGScp-0maWQiltVUyiPUnX9tcb9SCXwCsw
+export BOT_DB_USERNAME=root
+export BOT_DB_PASSWORD=root
 
 # Start new deployment
 docker-compose up --build -d
