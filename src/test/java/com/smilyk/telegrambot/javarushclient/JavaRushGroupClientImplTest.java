@@ -6,7 +6,6 @@ import com.smilyk.telegrambot.javarushclient.dto.GroupRequestArgs;
 import com.smilyk.telegrambot.javarushclient.dto.GroupsCountRequestArgs;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
