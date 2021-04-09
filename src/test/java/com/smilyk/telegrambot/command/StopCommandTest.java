@@ -4,8 +4,6 @@ import org.junit.jupiter.api.DisplayName;
 
 import static com.smilyk.telegrambot.command.CommandName.STOP;
 import static com.smilyk.telegrambot.command.StopCommand.STOP_MESSAGE;
-import static org.junit.jupiter.api.Assertions.*;
-
 @DisplayName("Unit-level testing for StopCommand")
 public class StopCommandTest extends AbstractCommandTest {
 
@@ -21,6 +19,6 @@ public class StopCommandTest extends AbstractCommandTest {
 
     @Override
     Command getCommand() {
-        return new StopCommand(sendBotMessageService);
+        return new StopCommand(sendBotMessageService, telegramUserService);
     }
 }
