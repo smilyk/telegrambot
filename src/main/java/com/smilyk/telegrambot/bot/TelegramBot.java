@@ -2,6 +2,8 @@ package com.smilyk.telegrambot.bot;
 
 import com.smilyk.telegrambot.command.CommandContainer;
 import com.smilyk.telegrambot.services.SendBotMessageServiceImpl;
+import com.smilyk.telegrambot.services.TelegramUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -28,9 +30,12 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     private final CommandContainer commandContainer;
 
-    public TelegramBot() {
-        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this));
+    @Autowired
+    public TelegramBot(TelegramUserService telegramUserService) {
+        this.commandContainer = new CommandContainer(new SendBotMessageServiceImpl(this), telegramUserService);
     }
+
+
 
     @Override
     public void onUpdateReceived(Update update) {
